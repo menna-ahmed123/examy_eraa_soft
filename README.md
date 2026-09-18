@@ -4,7 +4,7 @@ A Flutter exam-prep app that lets users sign up, log in, and browse available ex
 
 ##  Features
 
-- **Authentication** — Register and Login screens connected to the [Elevate Egy Exam API](https://exam.elevateegy.com/api/v1), with the auth token persisted locally via `shared_preferences` and attached automatically to future requests.
+- **Authentication** — Register and Login screens, with the auth token persisted locally via `shared_preferences` and attached automatically to future requests.
 - **Home** — Fetches and displays the list of available exams (title, duration, number of questions) with loading, error/retry, empty, and pull-to-refresh states.
 - **Explore** *(in progress)* — Browse subjects, view exams by language for a subject, and start an exam.
 
