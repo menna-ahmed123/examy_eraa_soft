@@ -1,22 +1,37 @@
-import 'package:examy/core/di/service_locator.dart';
-import 'package:examy/core/networking/dio_factory.dart';
-import 'package:examy/exam_app.dart';
+import 'package:examy/config/di/injection.dart';
+import 'package:examy/core/resources/app_theme.dart';
+import 'package:examy/app/routing/app_router.dart';
+import 'package:examy/feature/auth/presentation/auth/auth_wrapper.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-String? token;
+Future<void> main() async {
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
 
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
-  token = prefs.getString('token');
+  final appRouter = getIt<AppRouter>();
+  await appRouter.authCubit.checkAuthStatus();
 
-  await setupGetIt();
+  FlutterNativeSplash.remove();
+  runApp(ExamApp(appRouter: appRouter));
+}
 
-  if (token != null && token!.isNotEmpty) {
-    DioFactory.setTokenIntoHeaderAfterLogin(token!);
+class ExamApp extends StatelessWidget {
+  const ExamApp({super.key, required this.appRouter});
+
+  final AppRouter appRouter;
+
+  @override
+  Widget build(BuildContext context) {
+    return AuthWrapper(
+      authCubit: appRouter.authCubit,
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
+        routerConfig: appRouter.router,
+      ),
+    );
   }
-
-  runApp(const ExamApp());
 }
