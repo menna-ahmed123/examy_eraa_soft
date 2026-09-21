@@ -1,4 +1,4 @@
-import 'package:examy/config/base_response/base_response.dart';
+import 'package:examy/core/base_response/base_response.dart';
 import 'package:examy/feature/auth/data/models/auth_response_model.dart';
 import 'package:examy/feature/auth/domain/entities/sign_up_entity.dart';
 

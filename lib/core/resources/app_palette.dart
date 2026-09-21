@@ -9,6 +9,10 @@ class AppPalette {
   // Surfaces
   static const Color white = Color.fromARGB(255, 255, 255, 255);
   static const Color transparent = Color.fromARGB(0, 0, 0, 0);
+  static const Color scaffoldGrey = Color.fromARGB(255, 245, 246, 249);
+  static const Color optionBackground = Color.fromARGB(255, 238, 241, 248);
+  static const Color correctBackground = Color.fromARGB(255, 226, 246, 230);
+  static const Color incorrectBackground = Color.fromARGB(255, 255, 233, 233);
 
   // Text Colors
   static const Color primaryText = Color.fromARGB(255, 12, 16, 21);
@@ -17,6 +21,8 @@ class AppPalette {
 
   // Status Colors
   static const Color error = Color.fromARGB(255, 204, 16, 16);
+  static const Color success = Color.fromARGB(255, 27, 166, 86);
+  static const Color timerGreen = Color.fromARGB(255, 14, 135, 81);
 
   // Borders
   static const Color border = Color.fromARGB(31, 29, 25, 43);

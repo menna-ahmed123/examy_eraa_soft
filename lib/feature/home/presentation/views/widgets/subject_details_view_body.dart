@@ -1,3 +1,4 @@
+import 'package:examy/app/routing/app_routes.dart';
 import 'package:examy/core/constants/app_spacing.dart';
 import 'package:examy/core/resources/app_palette.dart';
 import 'package:examy/core/resources/app_text_styles.dart';
@@ -79,10 +80,19 @@ class SubjectDetailsViewBody extends StatelessWidget {
       height: 50,
       child: ElevatedButton(
         onPressed: () {
-          // TODO: أضف التنقل لصفحة الامتحان هنا
+          final subject = context.read<SubjectDetailsViewModel>().state.subject;
+          if (subject == null) return;
+          context.push(
+            AppRoutes.subjectExamsPath(subject.id),
+            extra: {
+              'id': subject.id,
+              'name': subject.name,
+              'icon': subject.icon,
+            },
+          );
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppPalette.primaryBlue, // أو اللون المعتمد في تطبيقك
+          backgroundColor: AppPalette.primaryBlue,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),

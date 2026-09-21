@@ -1,6 +1,11 @@
 import 'package:examy/core/constants/app_strings.dart';
+import 'package:examy/feature/exam/presentation/history/cubit/exam_history_cubit.dart';
+import 'package:examy/feature/exam/presentation/history/cubit/exam_history_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class AppShell extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
@@ -18,12 +23,17 @@ class AppShell extends StatelessWidget {
   BottomNavigationBar _buildBottomNavigationBar() {
     return BottomNavigationBar(
       currentIndex: navigationShell.currentIndex,
-      onTap: _onItemTapped,
+      onTap: (index) => _onItemTapped(index, null),
       items: _navigationItems,
     );
   }
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(int index, BuildContext? contextOverride) {
+    final ctx = contextOverride ?? navigatorKey.currentContext;
+    if (index == 1 && ctx != null) {
+      ctx.read<ExamHistoryCubit>().onEvent(const ExamHistoryEvent.load());
+    }
+
     navigationShell.goBranch(
       index,
       initialLocation: index == navigationShell.currentIndex,

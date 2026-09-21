@@ -52,8 +52,7 @@ class AppStrings {
   static const String newPassword = 'New password';
   static const String passwordResetSuccess =
       'Password reset successfully. Please login.';
-  static const String currentPassword =
-      'Current password';    
+  static const String currentPassword = 'Current password';
 
   // ===== Home =====
   static const String home = 'Home';
@@ -61,16 +60,58 @@ class AppStrings {
   static const String explore = 'Explore';
   static const String result = 'Result';
   static const String search = 'Search';
+  static const String survey = 'Survey';
   static const String browseBySubject = 'Browse by subject';
   static const String noSubjectsFound = 'No subjects found';
   static const String subjectDetails = 'Subject details';
   static const String createdAt = 'Created at';
+
   // ===== Profile =====
   static const String profile = 'Profile';
   static const String update = 'Update';
-   static const String editProfile = 'Edit Profile';
-   static const String changePassword = 'Change Password';
-   static const String passwordChangedSuccessfully = 'Password changed successfully';
-   static const String updating = 'Updating...';
-   
+  static const String editProfile = 'Edit Profile';
+  static const String changePassword = 'Change Password';
+  static const String passwordChangedSuccessfully = 'Password changed successfully';
+  static const String updating = 'Updating...';
+
+  // ===== Exam feature =====
+  static const String start = 'Start';
+  static const String startExam = 'Start Exam';
+  static const String question = 'Question';
+  static const String questions = 'Questions';
+  static const String minutes = 'minutes';
+  static const String min = 'min';
+  static const String correctedAnswersIn = 'corrected answers in';
+  static const String instructions = 'Instructions';
+  static const String instructionStableInternet = 'Make sure you have a stable internet connection.';
+  static const String instructionDontLeave = 'Avoid leaving the exam while it is in progress.';
+  static const String instructionTimer = 'The timer starts when the exam opens.';
+  static const String instructionSubmit = 'Submit before the timer ends to lock in your score.';
+  static const String noExamsFound = 'No exams found';
+  static const String yourHistory = 'Your history';
+  static const String availableExams = 'Available exams';
+  static const String exam = 'Exam';
+  static const String questionOf = 'Question';
+  static const String of = 'of';
+  static const String back = 'Back';
+  static const String next = 'Next';
+  static const String finish = 'Finish';
+  static const String noQuestionsFound = 'No questions found';
+  static const String exitExamTitle = 'Quit exam?';
+  static const String exitExamMessage = 'Are you sure you want to quit the exam? Your progress will be lost.';
+  static const String cancel = 'Cancel';
+  static const String exit = 'Exit';
+  static const String timeOutTitle = 'Time is up!';
+  static const String viewScore = 'View score';
+  static const String answers = 'Answers';
+  static const String noExamHistory = 'No exam history yet';
+  static const String results = 'Results';
+  static const String correct = 'Correct';
+  static const String incorrect = 'Incorrect';
+  static const String examScore = 'Exam score';
+  static const String yourScore = 'Your score';
+  static const String showResults = 'Show results';
+  static const String startAgain = 'Start again';
+  static const String answerReview = 'Answer review';
+  static const String completed = 'Completed';
 }

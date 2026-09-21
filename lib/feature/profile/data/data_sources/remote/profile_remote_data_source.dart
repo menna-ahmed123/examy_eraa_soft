@@ -1,4 +1,4 @@
-import 'package:examy/config/base_response/base_response.dart';
+import 'package:examy/core/base_response/base_response.dart';
 import 'package:examy/feature/profile/data/models/change_password_request_model.dart';
 import 'package:examy/feature/profile/data/models/change_password_response_model.dart';
 import 'package:examy/feature/profile/data/models/profile_response_model.dart';

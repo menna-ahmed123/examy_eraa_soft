@@ -1,4 +1,4 @@
-import 'package:examy/config/base_response/base_response.dart';
+import 'package:examy/core/base_response/base_response.dart';
 import 'package:examy/feature/home/data/data_sources/remote/explore_remote_data_source.dart';
 import 'package:examy/feature/home/data/models/subject_details_response_model.dart';
 import 'package:examy/feature/home/data/models/subjects_response_model.dart';

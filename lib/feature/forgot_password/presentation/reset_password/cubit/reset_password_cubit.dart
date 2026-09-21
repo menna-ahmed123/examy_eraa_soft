@@ -1,4 +1,4 @@
-import 'package:examy/config/base_response/base_response.dart';
+import 'package:examy/core/base_response/base_response.dart';
 import 'package:examy/feature/forgot_password/domain/entities/message_entity.dart';
 import 'package:examy/feature/forgot_password/domain/entities/reset_password_entity.dart';
 import 'package:examy/feature/forgot_password/domain/use_cases/reset_password_use_case.dart';

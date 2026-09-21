@@ -1,4 +1,4 @@
-import 'package:examy/config/base_response/base_response.dart';
+import 'package:examy/core/base_response/base_response.dart';
 import 'package:examy/core/storage/secure_storage_service.dart';
 import 'package:examy/feature/profile/data/data_sources/remote/profile_remote_data_source.dart';
 import 'package:examy/feature/profile/data/models/change_password_request_model.dart';

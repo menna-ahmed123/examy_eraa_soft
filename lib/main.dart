@@ -1,4 +1,4 @@
-import 'package:examy/config/di/injection.dart';
+import 'package:examy/core/di/injection.dart';
 import 'package:examy/core/resources/app_theme.dart';
 import 'package:examy/app/routing/app_router.dart';
 import 'package:examy/feature/auth/presentation/auth/auth_wrapper.dart';
@@ -12,10 +12,8 @@ Future<void> main() async {
   configureDependencies();
 
   final appRouter = getIt<AppRouter>();
-  await appRouter.authCubit.checkAuthStatus();
-
-  FlutterNativeSplash.remove();
   runApp(ExamApp(appRouter: appRouter));
+  FlutterNativeSplash.remove();
 }
 
 class ExamApp extends StatelessWidget {

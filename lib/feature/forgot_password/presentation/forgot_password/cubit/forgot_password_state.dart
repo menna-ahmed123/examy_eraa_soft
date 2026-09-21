@@ -1,4 +1,4 @@
-import 'package:examy/config/base_state/base_state.dart';
+import 'package:examy/core/base_state/base_state.dart';
 import 'package:examy/feature/forgot_password/domain/entities/message_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
