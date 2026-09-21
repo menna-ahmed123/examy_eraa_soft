@@ -12,14 +12,14 @@
 
 import 'package:dio/dio.dart' as _i361;
 import 'package:examy/app/routing/app_router.dart' as _i721;
-import 'package:examy/core/app_module/app_module.dart' as _i876;
+import 'package:examy/core/app_module/app_module.dart' as _i971;
 import 'package:examy/core/networking/auth_interceptor.dart' as _i409;
 import 'package:examy/core/storage/secure_storage_service.dart' as _i908;
 import 'package:examy/feature/auth/api/client/auth_api_client.dart' as _i370;
-import 'package:examy/feature/auth/data/data_sources/remote/auth_remote_data_source_impl.dart'
-    as _i688;
 import 'package:examy/feature/auth/data/data_sources/remote/auth_remote_data_source.dart'
     as _i961;
+import 'package:examy/feature/auth/data/data_sources/remote/auth_remote_data_source_impl.dart'
+    as _i996;
 import 'package:examy/feature/auth/data/repos/auth_repo_impl.dart' as _i90;
 import 'package:examy/feature/auth/domain/repos/auth_repo.dart' as _i747;
 import 'package:examy/feature/auth/domain/use_cases/login_use_case.dart'
@@ -32,14 +32,14 @@ import 'package:examy/feature/auth/presentation/login/cubit/login_cubit.dart'
 import 'package:examy/feature/auth/presentation/sign_up/cubit/sign_up_cubit.dart'
     as _i542;
 import 'package:examy/feature/exam/api/client/exam_api_client.dart' as _i231;
-import 'package:examy/feature/exam/data/data_sources/remote/exam_remote_data_source_impl.dart'
-    as _i468;
 import 'package:examy/feature/exam/data/data_sources/local/exam_history_local_data_source.dart'
     as _i88;
 import 'package:examy/feature/exam/data/data_sources/local/exam_history_local_data_source_impl.dart'
     as _i59;
 import 'package:examy/feature/exam/data/data_sources/remote/exam_remote_data_source.dart'
     as _i1032;
+import 'package:examy/feature/exam/data/data_sources/remote/exam_remote_data_source_impl.dart'
+    as _i246;
 import 'package:examy/feature/exam/data/repos/exam_history_repo_impl.dart'
     as _i455;
 import 'package:examy/feature/exam/data/repos/exam_repo_impl.dart' as _i1;
@@ -72,10 +72,10 @@ import 'package:examy/feature/exam/presentation/taking_exam/cubit/taking_exam_cu
     as _i285;
 import 'package:examy/feature/forgot_password/api/client/forgot_password_api_client.dart'
     as _i167;
-import 'package:examy/feature/forgot_password/data/data_sources/remote/forgot_password_remote_data_source_impl.dart'
-    as _i626;
 import 'package:examy/feature/forgot_password/data/data_sources/remote/forgot_password_remote_data_source.dart'
     as _i809;
+import 'package:examy/feature/forgot_password/data/data_sources/remote/forgot_password_remote_data_source_impl.dart'
+    as _i381;
 import 'package:examy/feature/forgot_password/data/repos/forgot_password_repo_impl.dart'
     as _i961;
 import 'package:examy/feature/forgot_password/domain/repos/forgot_password_repo.dart'
@@ -93,10 +93,10 @@ import 'package:examy/feature/forgot_password/presentation/forgot_password/cubit
 import 'package:examy/feature/forgot_password/presentation/reset_password/cubit/reset_password_cubit.dart'
     as _i189;
 import 'package:examy/feature/home/api/client/explore_api_client.dart' as _i141;
-import 'package:examy/feature/home/data/data_sources/remote/explore_remote_data_source_impl.dart'
-    as _i876;
 import 'package:examy/feature/home/data/data_sources/remote/explore_remote_data_source.dart'
     as _i760;
+import 'package:examy/feature/home/data/data_sources/remote/explore_remote_data_source_impl.dart'
+    as _i368;
 import 'package:examy/feature/home/data/repos/explore_repo_impl.dart' as _i461;
 import 'package:examy/feature/home/domain/repos/explore_repo.dart' as _i856;
 import 'package:examy/feature/home/domain/use_cases/get_subject_details_use_case.dart'
@@ -109,10 +109,10 @@ import 'package:examy/feature/home/presentation/view_model/subject_details_view_
     as _i1002;
 import 'package:examy/feature/profile/api/client/profile_api_client.dart'
     as _i35;
-import 'package:examy/feature/profile/data/data_sources/remote/profile_remote_data_source_impl.dart'
-    as _i758;
 import 'package:examy/feature/profile/data/data_sources/remote/profile_remote_data_source.dart'
     as _i798;
+import 'package:examy/feature/profile/data/data_sources/remote/profile_remote_data_source_impl.dart'
+    as _i431;
 import 'package:examy/feature/profile/data/repos/profile_repo_impl.dart'
     as _i259;
 import 'package:examy/feature/profile/domain/repos/profile_repo.dart' as _i245;
@@ -185,23 +185,28 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i35.ProfileApiClient>(
       () => _i35.ProfileApiClient(gh<_i361.Dio>()),
     );
-    gh.lazySingleton<_i809.ForgotPasswordRemoteDataSource>(
-      () => _i626.ForgotPasswordRemoteDataSourceImpl(
-        forgotPasswordApiClient: gh<_i167.ForgotPasswordApiClient>(),
-      ),
-    );
     gh.lazySingleton<_i1032.ExamRemoteDataSource>(
-      () => _i468.ExamRemoteDataSourceImpl(
+      () => _i246.ExamRemoteDataSourceImpl(
         examApiClient: gh<_i231.ExamApiClient>(),
       ),
     );
     gh.factory<_i798.ProfileRemoteDataSource>(
-      () => _i758.ProfileRemoteDataSourceImpl(
+      () => _i431.ProfileRemoteDataSourceImpl(
         profileApiClient: gh<_i35.ProfileApiClient>(),
+      ),
+    );
+    gh.lazySingleton<_i961.AuthRemoteDataSource>(
+      () => _i996.AuthRemoteDataSourceImpl(
+        authApiClient: gh<_i370.AuthApiClient>(),
       ),
     );
     gh.factory<_i247.ExamHistoryCubit>(
       () => _i247.ExamHistoryCubit(gh<_i578.GetExamHistoryUseCase>()),
+    );
+    gh.lazySingleton<_i809.ForgotPasswordRemoteDataSource>(
+      () => _i381.ForgotPasswordRemoteDataSourceImpl(
+        forgotPasswordApiClient: gh<_i167.ForgotPasswordApiClient>(),
+      ),
     );
     gh.lazySingleton<_i1.ForgotPasswordRepo>(
       () => _i961.ForgotPasswordRepoImpl(
@@ -209,19 +214,9 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i809.ForgotPasswordRemoteDataSource>(),
       ),
     );
-    gh.lazySingleton<_i961.AuthRemoteDataSource>(
-      () => _i688.AuthRemoteDataSourceImpl(
-        authApiClient: gh<_i370.AuthApiClient>(),
-      ),
-    );
     gh.lazySingleton<_i478.ExamRepo>(
       () => _i1.ExamRepoImpl(
         examRemoteDataSource: gh<_i1032.ExamRemoteDataSource>(),
-      ),
-    );
-    gh.factory<_i760.ExploreRemoteDataSource>(
-      () => _i876.ExploreRemoteDataSourceImpl(
-        exploreApiClient: gh<_i141.ExploreApiClient>(),
       ),
     );
     gh.lazySingleton<_i747.AuthRepo>(
@@ -244,6 +239,11 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i680.UpdateProfileUseCase>(
       () => _i680.UpdateProfileUseCase(profileRepo: gh<_i245.ProfileRepo>()),
+    );
+    gh.factory<_i760.ExploreRemoteDataSource>(
+      () => _i368.ExploreRemoteDataSourceImpl(
+        exploreApiClient: gh<_i141.ExploreApiClient>(),
+      ),
     );
     gh.lazySingleton<_i211.ForgotPasswordUseCase>(
       () => _i211.ForgotPasswordUseCase(gh<_i1.ForgotPasswordRepo>()),
@@ -338,4 +338,4 @@ extension GetItInjectableX on _i174.GetIt {
   }
 }
 
-class _$AppModule extends _i876.AppModule {}
+class _$AppModule extends _i971.AppModule {}
