@@ -151,4 +151,15 @@ flutter run
 
 ## Screenshots
 
-<!-- screenshots go here -->
+<table>
+  <tr>
+    <td align="center"><img src="screenshots/login.png" width="200"/><br/>Login</td>
+    <td align="center"><img src="screenshots/explore.png" width="200"/><br/>Explore</td>
+    <td align="center"><img src="screenshots/exam_question.png" width="200"/><br/>Taking Exam</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="screenshots/exam_score.png" width="200"/><br/>Exam Score</td>
+    <td align="center"><img src="screenshots/results.png" width="200"/><br/>Results</td>
+    <td></td>
+  </tr>
+</table>
