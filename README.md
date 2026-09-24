@@ -151,7 +151,7 @@ flutter run
 
 ## Project Board
 
-[View Examy Project Board on Trello](https://trello.com/b/BdTHIf0l/examy)
+[View Examy Project Board on Trello](https://trello.com/b/NA05lzUi/examy-product-development)
 
 ## Screenshots
 
