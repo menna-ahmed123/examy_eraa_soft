@@ -73,6 +73,14 @@ class AppStrings {
   static const String changePassword = 'Change Password';
   static const String passwordChangedSuccessfully = 'Password changed successfully';
   static const String updating = 'Updating...';
+  static const String photoAccessDenied =
+      'Could not access photos. Please grant permission and try again.';
+  static const String photoPermissionRequired = 'Photo access required';
+  static const String photoPermissionRationale =
+      'We need access to your photos so you can choose a profile picture.';
+  static const String openSettings = 'Open settings';
+  static const String photoSaveFailed =
+      'Could not save photo. Please try again.';
 
   // ===== Exam feature =====
   static const String start = 'Start';

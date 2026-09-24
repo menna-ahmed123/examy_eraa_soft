@@ -1,4 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Gallery access for profile photo picking (image_picker + permission_handler).
+         Android 13+ uses the photo picker (READ_MEDIA_IMAGES); Android 12 and
+         below fall back to READ_EXTERNAL_STORAGE. -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
     <application
         android:label="examy"
         android:name="${applicationName}"

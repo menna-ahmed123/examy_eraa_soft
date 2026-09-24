@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:examy/core/constants/app_spacing.dart';
 import 'package:examy/core/constants/app_strings.dart';
 import 'package:examy/app/routing/app_routes.dart';
+import 'package:examy/core/di/injection.dart';
 import 'package:examy/core/widgets/app_back_header.dart';
 import 'package:examy/core/widgets/app_button.dart';
+import 'package:examy/feature/profile/domain/use_cases/get_profile_photo_use_case.dart';
 import 'package:examy/feature/profile/presentation/view_model/profile_event.dart';
 import 'package:examy/feature/profile/presentation/view_model/profile_state.dart';
 import 'package:examy/feature/profile/presentation/view_model/profile_view_model.dart';
@@ -26,6 +30,7 @@ class ProfileViewBodyState extends State<ProfileViewBody> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _phoneController = TextEditingController();
+  String? _photoPath;
 
   @override
   void initState() {
@@ -55,6 +60,22 @@ class ProfileViewBodyState extends State<ProfileViewBody> {
     _emailController.text = profile.email;
     _phoneController.text = profile.phone;
     _passwordController.text = '********';
+
+    _loadLocalPhoto(profile.id);
+  }
+
+  Future<void> _loadLocalPhoto(String userId) async {
+    final path = await getIt<GetProfilePhotoUseCase>()(userId);
+    if (!mounted) return;
+
+    if (path != null) {
+      // The copied file is overwritten in place, so evict any cached image
+      // for this path before rebuilding.
+      await FileImage(File(path)).evict();
+      if (!mounted) return;
+    }
+
+    setState(() => _photoPath = path);
   }
 
   @override
@@ -82,10 +103,10 @@ class ProfileViewBodyState extends State<ProfileViewBody> {
       );
     }
 
-    return _buildContent(context);
+    return _buildContent(context, state);
   }
 
-  Widget _buildContent(BuildContext context) {
+  Widget _buildContent(BuildContext context, ProfileState state) {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacing.screenHorizontal,
@@ -96,7 +117,12 @@ class ProfileViewBodyState extends State<ProfileViewBody> {
             const SizedBox(height: AppSpacing.appParSpace),
             const AppBackHeader(title: AppStrings.profile),
             const SizedBox(height: AppSpacing.sectionGap),
-            const Center(child: ProfileAvatar()),
+            Center(
+              child: ProfileAvatar(
+                imageFile:
+                    _photoPath != null ? File(_photoPath!) : null,
+              ),
+            ),
             const SizedBox(height: AppSpacing.buttonTopGap),
             _buildProfileForm(),
             const SizedBox(height: AppSpacing.buttonTopGap),
@@ -123,8 +149,16 @@ class ProfileViewBodyState extends State<ProfileViewBody> {
   Widget _buildUpdateButton(BuildContext context) {
     return AppButton(
       text: AppStrings.update,
-      onPressed: () {
-        context.pushNamed(AppRoutes.profileEdit);
+      onPressed: () async {
+        final updated = await context.pushNamed<bool>(
+          AppRoutes.profileEdit,
+        );
+        if (updated == true && context.mounted) {
+          final viewModel = context.read<ProfileViewModel>();
+          viewModel.doEvent(GetProfileEvent());
+          final userId = viewModel.state.profileState.data?.id;
+          if (userId != null) _loadLocalPhoto(userId);
+        }
       },
     );
   }

@@ -5,10 +5,10 @@ import 'package:examy/feature/exam/presentation/history/cubit/exam_history_state
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-@injectable
+@lazySingleton
 class ExamHistoryCubit extends Cubit<ExamHistoryState> {
   ExamHistoryCubit(this._getExamHistoryUseCase)
-      : super(ExamHistoryState.initial());
+    : super(ExamHistoryState.initial());
 
   final GetExamHistoryUseCase _getExamHistoryUseCase;
 

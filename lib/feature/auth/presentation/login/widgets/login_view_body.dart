@@ -4,6 +4,7 @@ import 'package:examy/core/resources/app_palette.dart';
 import 'package:examy/app/routing/app_routes.dart';
 import 'package:examy/core/utils/build_snack_bar.dart';
 import 'package:examy/core/utils/validators.dart';
+import 'package:examy/core/widgets/app_back_header.dart';
 import 'package:examy/core/widgets/app_button.dart';
 import 'package:examy/core/widgets/app_checkbox_tile.dart';
 import 'package:examy/core/widgets/app_footer_link.dart';
@@ -62,7 +63,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   List<Widget> _formChildren() {
     return [
       const SizedBox(height: 80),
-
+    AppBackHeader(title:  AppStrings.login),
       const SizedBox(height: AppSpacing.sectionGap),
       _emailField(),
       const SizedBox(height: AppSpacing.sectionGap),

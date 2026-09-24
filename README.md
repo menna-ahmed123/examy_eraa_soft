@@ -149,6 +149,67 @@ dart run build_runner build --delete-conflicting-outputs
 flutter run
 ```
 
+## Project Board
+
+[View Examy Project Board on Trello](https://trello.com/b/BdTHIf0l/examy)
+
 ## Screenshots
 
-![App Preview](screenshots/app_preview.jpg)
+<table>
+  <tr>
+    <td align="center">
+      <img src="screenshots/splash.jpeg" width="200"/><br/>
+      Splash
+    </td>
+    <td align="center">
+      <img src="screenshots/login.jpeg" width="200"/><br/>
+      Login
+    </td>
+    <td align="center">
+      <img src="screenshots/explore.jpeg" width="200"/><br/>
+      Explore
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="screenshots/subjects.jpeg" width="200"/><br/>
+      Subjects
+    </td>
+    <td align="center">
+      <img src="screenshots/exam_questions.jpeg" width="200"/><br/>
+      Exam Questions
+    </td>
+    <td align="center">
+      <img src="screenshots/exam_question_answered.jpeg" width="200"/><br/>
+      Exam Question Answered
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="screenshots/exam_score.jpeg" width="200"/><br/>
+      Exam Score
+    </td>
+    <td align="center">
+      <img src="screenshots/answers_review.jpeg" width="200"/><br/>
+      Answers Review
+    </td>
+    <td align="center">
+      <img src="screenshots/results.jpeg" width="200"/><br/>
+      Results
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="screenshots/profile.jpeg" width="200"/><br/>
+      Profile
+    </td>
+    <td align="center">
+      <img src="screenshots/edit_profile.jpeg" width="200"/><br/>
+      Edit Profile
+    </td>
+    <td align="center">
+      <img src="screenshots/change_password.jpeg" width="200"/><br/>
+      Change Password
+    </td>
+  </tr>
+</table>

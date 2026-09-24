@@ -109,17 +109,29 @@ import 'package:examy/feature/home/presentation/view_model/subject_details_view_
     as _i1002;
 import 'package:examy/feature/profile/api/client/profile_api_client.dart'
     as _i35;
+import 'package:examy/feature/profile/data/data_sources/local/profile_photo_local_data_source.dart'
+    as _i162;
+import 'package:examy/feature/profile/data/data_sources/local/profile_photo_local_data_source_impl.dart'
+    as _i177;
 import 'package:examy/feature/profile/data/data_sources/remote/profile_remote_data_source.dart'
     as _i798;
 import 'package:examy/feature/profile/data/data_sources/remote/profile_remote_data_source_impl.dart'
     as _i431;
+import 'package:examy/feature/profile/data/repos/profile_photo_repo_impl.dart'
+    as _i1027;
 import 'package:examy/feature/profile/data/repos/profile_repo_impl.dart'
     as _i259;
+import 'package:examy/feature/profile/domain/repos/profile_photo_repo.dart'
+    as _i829;
 import 'package:examy/feature/profile/domain/repos/profile_repo.dart' as _i245;
 import 'package:examy/feature/profile/domain/use_cases/change_passoword_use_case.dart'
     as _i216;
+import 'package:examy/feature/profile/domain/use_cases/get_profile_photo_use_case.dart'
+    as _i48;
 import 'package:examy/feature/profile/domain/use_cases/get_profile_use_case.dart'
     as _i238;
+import 'package:examy/feature/profile/domain/use_cases/save_profile_photo_use_case.dart'
+    as _i931;
 import 'package:examy/feature/profile/domain/use_cases/update_profile_use_case.dart'
     as _i680;
 import 'package:examy/feature/profile/presentation/view_model/profile_view_model.dart'
@@ -146,11 +158,25 @@ extension GetItInjectableX on _i174.GetIt {
       () =>
           _i59.ExamHistoryLocalDataSourceImpl(gh<_i908.SecureStorageService>()),
     );
+    gh.factory<_i162.ProfilePhotoLocalDataSource>(
+      () => _i177.ProfilePhotoLocalDataSourceImpl(),
+    );
     gh.lazySingleton<_i409.AuthInterceptor>(
       () => _i409.AuthInterceptor(gh<_i908.SecureStorageService>()),
     );
     gh.lazySingleton<_i1020.AuthCubit>(
       () => _i1020.AuthCubit(gh<_i908.SecureStorageService>()),
+    );
+    gh.factory<_i829.ProfilePhotoRepo>(
+      () => _i1027.ProfilePhotoRepoImpl(
+        localDataSource: gh<_i162.ProfilePhotoLocalDataSource>(),
+      ),
+    );
+    gh.factory<_i48.GetProfilePhotoUseCase>(
+      () => _i48.GetProfilePhotoUseCase(gh<_i829.ProfilePhotoRepo>()),
+    );
+    gh.factory<_i931.SaveProfilePhotoUseCase>(
+      () => _i931.SaveProfilePhotoUseCase(gh<_i829.ProfilePhotoRepo>()),
     );
     gh.lazySingleton<_i721.AppRouter>(
       () => _i721.AppRouter(gh<_i1020.AuthCubit>()),
@@ -200,7 +226,7 @@ extension GetItInjectableX on _i174.GetIt {
         authApiClient: gh<_i370.AuthApiClient>(),
       ),
     );
-    gh.factory<_i247.ExamHistoryCubit>(
+    gh.lazySingleton<_i247.ExamHistoryCubit>(
       () => _i247.ExamHistoryCubit(gh<_i578.GetExamHistoryUseCase>()),
     );
     gh.lazySingleton<_i809.ForgotPasswordRemoteDataSource>(
